@@ -65,7 +65,7 @@ pub fn raw_fd(fd: u64) -> Result<u32, RemotePidError> {
 	
 	// Create the stream from the raw FD
 	let stream: TcpStream = unsafe{ TcpStream::from_raw_fd(fd) };
-	tcp(&stream)
+	tcp_stream(&stream)
 }
 
 
