@@ -1,0 +1,28 @@
+[package]
+name = "remote_pid"
+version = "0.1.0"
+edition = "2018"
+authors = ["Keziah Biermann <development@kizzycode.de>"]
+description = "Crate to get the PID of the remote TCP-endpoint on localhost"
+categories = ["authentication"]
+keywords = ["authentication", "PID", "IPC"]
+license = "BSD-2-Clause OR MIT"
+repository = "https://github.com/KizzyCode/remote_pid"
+readme = "README.md"
+
+
+[features]
+default = []
+c_api = []
+
+
+[lib]
+name = "remote_pid"
+crate-type = ["rlib", "cdylib", "staticlib"]
+
+
+[profile.release]
+overflow-checks = true
+
+[profile.bench]
+overflow-checks = true
