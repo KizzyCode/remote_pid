@@ -55,7 +55,7 @@ pub fn addr_pair(local: impl ToSocketAddrs, remote: impl ToSocketAddrs)
 /// Gets the PID at the remote endpoint of the TCP connection referenced by `fd`
 #[cfg(feature = "c_api")]
 pub fn raw_fd(fd: u64) -> Result<u32, RemotePidError> {
-	use std::os::unix::io::{ RawFd, FromRawFd };
+	use std::os::unix::io::{ RawFd, FromRawFd, IntoRawFd };
 	
 	// Validate and convert the raw FD
 	let fd = match fd {
