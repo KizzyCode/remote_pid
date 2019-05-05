@@ -63,9 +63,13 @@ pub fn raw_fd(fd: u64) -> Result<u32, RemotePidError> {
 		fd => fd as RawFd
 	};
 	
-	// Create the stream from the raw FD
+	// Get the address pair
 	let stream: TcpStream = unsafe{ TcpStream::from_raw_fd(fd) };
-	tcp_stream(&stream)
+	let (local, remote) = (stream.local_addr()?, stream.peer_addr()?);
+	let _ = stream.into_raw_fd();
+	
+	// Get the address from the pair
+	addr_pair(local, remote)
 }
 
 
